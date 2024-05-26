@@ -26,7 +26,8 @@
 						<li><a href="#one" class="active">Sobre mí</a></li>
 						<li><a href="#two">Habilidades</a></li>
 						<li><a href="#three">Trabajos</a></li>
-						<li><a href="#four">Contacto</a></li>
+						<li><a href="#four">Actividades</a></li>
+						<li><a href="#five">Contacto</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -109,7 +110,268 @@
 							</section>
 
 						<!-- Four -->
-							<section id="four">
+						<section id="Four">
+							<div class="container">
+								<h3>Actividades en clase :0</h3>
+								<p>Estos son actividades que se realizaron en el promedio 2.</p>
+								<div class="features">
+									<article>
+										<a href="#" class="image"><img src="./actividad1.PNG" alt="" /></a>
+										<div class="inner">
+											<h4>Proyecto 1: Resistencia											</h4>
+											<p>Descripción:
+												Una resistencia es un componente eléctrico que limita la cantidad de corriente que puede fluir a través de un circuito. Es crucial en muchos circuitos electrónicos para proteger componentes sensibles.
+												
+											<p>	Materiales:<br />
+												- Arduino Uno<br />
+												- Protoboard<br />
+												- Resistencia (220Ω)<br />
+												- LED<br />
+												- Cables de conexión<br />
+												
+											<p>	Pasos:<br />
+												
+												1. Conexión de la Resistencia y el LED:<br />
+												   - Conecta la pata larga del LED (ánodo) al pin digital 13 del Arduino a través de una resistencia de 220Ω.<br />
+												   - Conecta la pata corta del LED (cátodo) a GND (tierra) del Arduino.<br />
+												
+												2. Código Arduino IDE:<br />
+												```cpp
+												void setup() {
+													pinMode(13, OUTPUT); // Configura el pin 13 como salida
+												}
+											 
+												void loop() {
+													digitalWrite(13, HIGH); // Enciende el LED
+													delay(1000); // Espera 1 segundo
+													digitalWrite(13, LOW); // Apaga el LED
+													delay(1000); // Espera 1 segundo
+												}
+												```
+											 
+											<p> 3. Sube el código al Arduino:<br />
+												- Conecta el Arduino a tu computadora.<br />
+												- Abre el Arduino IDE, pega el código anterior y súbelo al Arduino.<br />
+											 
+												</p>
+										</div>
+									</article>
+									<article>
+										<a href="#" class="image"><img src="./no hay.png" alt="" /></a>
+										<div class="inner">
+											<h4>Proyecto 2: Sensor de Ultrasonido con Botón</h4>
+											<p> Descripción:<br />
+												Este proyecto utiliza un sensor de ultrasonido para medir la distancia y un botón para activar el sensor. El resultado se mostrará en el monitor serie del Arduino.
+												
+											<p>	Materiales:<br />
+												- Arduino Uno<br />
+												- Sensor de Ultrasonido HC-SR04<br />
+												- Botón<br />
+												- Protoboard<br />
+												- Cables de conexión<br />
+												- Resistencia (10kΩ para el botón)<br />
+												
+											<p>	Pasos:<br />
+
+												1. Conexión del Sensor de Ultrasonido:<br />
+												   - VCC del sensor al pin 5V del Arduino.<br />
+												   - GND del sensor a GND del Arduino.<br />
+												   - Trig del sensor al pin digital 9 del Arduino.<br />
+												   - Echo del sensor al pin digital 10 del Arduino.<br />
+												
+												2. Conexión del Botón:<br />
+												   - Un pin del botón al pin digital 2 del Arduino.<br />
+												   - El otro pin del botón a GND.<br />
+												   - Coloca una resistencia de 10kΩ entre el pin del botón que está conectado al pin 2 del Arduino y el 5V.<br />
+												
+												3. Código Arduino IDE:<br />
+												
+												
+												 ```cpp
+												   const int trigPin = 9;
+												   const int echoPin = 10;
+												   const int buttonPin = 2;
+												   long duration;
+												   int distance;
+												
+												   void setup() {
+													   pinMode(trigPin, OUTPUT);
+													   pinMode(echoPin, INPUT);
+													   pinMode(buttonPin, INPUT_PULLUP);
+													   Serial.begin(9600);
+												   }
+												
+												   void loop() {
+													   if (digitalRead(buttonPin) == LOW) {
+												
+														   digitalWrite(trigPin, LOW);
+														   delayMicroseconds(2);
+														   digitalWrite(trigPin, HIGH);
+														   delayMicroseconds(10);
+														   digitalWrite(trigPin, LOW);
+												
+														   duration = pulseIn(echoPin, HIGH);
+														   distance = duration * 0.034 / 2;
+												
+														   Serial.print("Distance: ");
+														   Serial.print(distance);
+														   Serial.println(" cm");
+														   delay(1000);
+													   }
+												   }
+												   ```
+												
+												
+											<p>	4. Sube el código al Arduino:<br />
+												   - Conecta el Arduino a tu computadora.<br />
+												   - Abre el Arduino IDE, pega el código anterior y súbelo al Arduino.<br />
+												   - Abre el monitor serie para ver la distancia medida cuando presionas el botón.<br />
+												</p>
+										</div>
+									</article>
+									<article>
+										<a href="#" class="image"><img src="./semaforo.jpg" alt="" /></a>
+										<div class="inner">
+											<h4> Proyecto 3: Semáforo en Tinkercad</h4>
+											<p>Descripción:<br />
+												Este proyecto simula un semáforo usando LEDs. Los LEDs se encenderán en secuencia para simular las luces de un semáforo: rojo, amarillo y verde.
+												
+											<p>	Materiales:<br />
+												- Arduino Uno<br />
+												- LEDs (rojo, amarillo y verde)<br />
+												- Resistencias (220Ω)<br />
+												- Protoboard<br />
+												- Cables de conexión<br />
+												
+											<p>	Pasos:<br />
+												
+												1. Conexión de los LEDs:<br />
+												   - Conecta la pata larga de cada LED a los pines digitales del Arduino: rojo al pin 13, amarillo al pin 12, y verde al pin 11.<br />
+												   - Conecta la pata corta de cada LED a GND a través de una resistencia de 220Ω.<br />
+												
+												2. Código Arduino IDE:<br />
+												
+												
+												 ```cpp
+												   const int redLED = 13;
+												   const int yellowLED = 12;
+												   const int greenLED = 11;
+												
+												   void setup() {
+													   pinMode(redLED, OUTPUT);
+													   pinMode(yellowLED, OUTPUT);
+													   pinMode(greenLED, OUTPUT);
+												   }
+												
+												   void loop() {
+													   digitalWrite(redLED, HIGH);
+													   delay(5000);
+													   digitalWrite(redLED, LOW);
+												
+													   digitalWrite(yellowLED, HIGH);
+													   delay(2000);
+													   digitalWrite(yellowLED, LOW);
+												
+													   digitalWrite(greenLED, HIGH);
+													   delay(5000);
+													   digitalWrite(greenLED, LOW);
+												   }
+												   ```
+												
+												
+											<p>	3. Sube el código al Arduino:<br />
+												   - Conecta el Arduino a tu computadora.<br />
+												   - Abre el Arduino IDE, pega el código anterior y súbelo al Arduino.<br />
+												</p>
+										</div>
+									</article>
+									<article>
+										<a href="#" class="image"><img src="./4proyecto.jpg" alt="" /></a>
+										<div class="inner">
+											<h4> Proyecto 4: Sensor de Ultrasonido con Servomotor</h4>
+											<p>Descripción:<br />
+												Este proyecto utiliza un sensor de ultrasonido para detectar objetos y mover un servomotor para abrir una puerta cuando la distancia medida es menor a un umbral determinado.
+												
+											<p>	Materiales:<br />
+												- Arduino Uno<br />
+												- Sensor de Ultrasonido HC-SR04<br />
+												- Servomotor<br />
+												- Protoboard<br />
+												- Cables de conexión<br />
+												
+											<p>	Pasos:<br />
+												
+												1. Conexión del Sensor de Ultrasonido:<br />
+												   - VCC del sensor al pin 5V del Arduino.<br />
+												   - GND del sensor a GND del Arduino.<br />
+												   - Trig del sensor al pin digital 9 del Arduino.<br />
+												   - Echo del sensor al pin digital 10 del Arduino.<br />
+												
+												2. Conexión del Servomotor:<br />
+												   - VCC del servomotor al pin 5V del Arduino.<br />
+												   - GND del servomotor a GND del Arduino.<br />
+												   - Pin de control del servomotor al pin digital 6 del Arduino.<br />
+												
+												3. Código Arduino IDE:<br />
+												 
+												
+												```cpp
+												   include <Servo.h>
+												
+												   const int trigPin = 9;
+												   const int echoPin = 10;
+												   const int servoPin = 6;
+												   long duration;
+												   int distance;
+												   Servo myServo;
+												
+												   void setup() {
+													   pinMode(trigPin, OUTPUT);
+													   pinMode(echoPin, INPUT);
+													   myServo.attach(servoPin);
+													   myServo.write(0); // Cierra la puerta inicialmente
+													   Serial.begin(9600);
+												   }
+												
+												   void loop() {
+													   digitalWrite(trigPin, LOW);
+													   delayMicroseconds(2);
+													   digitalWrite(trigPin, HIGH);
+													   delayMicroseconds(10);
+													   digitalWrite(trigPin, LOW);
+												
+													   duration = pulseIn(echoPin, HIGH);
+													   distance = duration * 0.034 / 2;
+												
+													   Serial.print("Distance: ");
+													   Serial.print(distance);
+													   Serial.println(" cm");
+												
+													   if (distance < 10) {
+														   myServo.write(90); // Abre la puerta
+													   } else {
+														   myServo.write(0); // Cierra la puerta
+													   }
+												
+													   delay(1000);
+												   }
+												   ```
+												
+												
+											<p>	4. Sube el código al Arduino:<br />
+												   - Conecta el Arduino a tu computadora.<br />
+												   - Abre el Arduino IDE, pega el código anterior y súbelo al Arduino.<br />
+												   - Observa cómo el servomotor se mueve para abrir y cerrar la puerta basada en la distancia medida por el sensor de ultrasonido.<br />
+												
+												</p>
+										</div>
+									</article>
+								</div>
+							</div>
+						</section>	
+
+						<!-- Five -->
+							<section id="five">
 								<div class="container">
 									<h3>Contáctame</h3>
 									<p>Si deseas trabajar conmigo o ver más de mis proyectos contáctame :)</p>
